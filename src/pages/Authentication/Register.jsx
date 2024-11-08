@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import bgImg from '../../assets/images/register.jpg'
+import logo from '../../assets/images/logo.png'
 
 const Register = () => {
   return (
@@ -8,7 +10,7 @@ const Register = () => {
           <div className="flex justify-center mx-auto">
             <img
               className="w-auto h-7 sm:h-8"
-              src="https://merakiui.com/images/logo.svg"
+              src={logo}
               alt=""
             />
           </div>
@@ -144,7 +146,7 @@ const Register = () => {
         <div
           className="hidden bg-cover bg-center lg:block lg:w-1/2"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80')`,
+            backgroundImage: `url(${bgImg})`,
           }}
         ></div>
       </div>
