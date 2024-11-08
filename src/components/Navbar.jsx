@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import logo from "../assets/images/logo.png";
 import { AuthContext } from "../provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -15,10 +16,15 @@ const Navbar = () => {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <div>Home</div>
+            <div>
+              <Link to={"/"}>Home</Link>
+            </div>
           </li>
-
-          <li>{!user && <div>Login</div>}</li>
+          {!user && (
+            <li>
+              <Link to={"/login"}>Login</Link>
+            </li>
+          )}
         </ul>
         {user && (
           <div className="dropdown dropdown-end z-50">
