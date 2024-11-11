@@ -1,11 +1,12 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import TabCard from "./TabCard";
 
 export default function () {
   const categories = [
     {
       title: "Web Development",
-      content: "Comprehensive web development services",
+      content: <TabCard></TabCard>,
     },
     {
       title: "Graphics Design",
