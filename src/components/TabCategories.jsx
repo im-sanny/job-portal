@@ -2,19 +2,16 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import TabCard from "./TabCard";
 
-export default function () {
+export default function ({ jobs }) {
   const categories = [
     {
       title: "Web Development",
-      content: <TabCard></TabCard>,
     },
     {
       title: "Graphics Design",
-      content: "Creative and professional graphic design solutions",
     },
     {
       title: "Digital Marketing",
-      content: "Strategic digital marketing approaches",
     },
   ];
   return (
@@ -35,11 +32,33 @@ export default function () {
             ))}
           </TabList>
         </div>
-        {categories.map((category, index) => (
-          <TabPanel key={index}>
-            <h2>{category.content}</h2>
-          </TabPanel>
-        ))}
+        <TabPanel>
+          <div className="grid grid-cols-1 gap-5 mt-5 xl:mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {jobs
+              .filter((j) => j.category === "Web Development")
+              .map((job) => (
+                <TabCard key={job._id} job={job}></TabCard>
+              ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 gap-5 mt-5 xl:mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {jobs
+              .filter((j) => j.category === "Graphics Design")
+              .map((job) => (
+                <TabCard key={job._id} job={job}></TabCard>
+              ))}
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid grid-cols-1 gap-5 mt-5 xl:mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {jobs
+              .filter((j) => j.category === "Digital Marketing")
+              .map((job) => (
+                <TabCard key={job._id} job={job}></TabCard>
+              ))}
+          </div>
+        </TabPanel>
       </div>
     </Tabs>
   );
