@@ -1,27 +1,36 @@
-import React from "react";
+import { useLoaderData } from "react-router-dom";
 
 export default function CardDetails() {
+  const job = useLoaderData();
+  const {
+    _id,
+    job_title,
+    description,
+    category,
+    min_price,
+    max_price,
+    deadline,
+  } = job || {};
+  console.log(job);
   return (
     <div className="flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto ">
       {/* Job Details */}
       <div className="flex-1 px-4 py-7 bg-white rounded-md shadow-md md:min-h-[350px]">
         <div className="flex items-center justify-between">
           <span className="text-sm font-light text-gray-800 ">
-            Deadline: 12/08/2024
+            Deadline: {deadline}
           </span>
           <span className="px-4 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full ">
-            Web Development
+            {category}
           </span>
         </div>
 
         <div>
           <h1 className="mt-2 text-3xl font-semibold text-gray-800 ">
-            Build Dynamic Website
+            {job_title}
           </h1>
 
-          <p className="mt-2 text-lg text-gray-600 ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit...
-          </p>
+          <p className="mt-2 text-lg text-gray-600 ">{description}</p>
           <p className="mt-6 text-sm font-bold text-gray-600 ">
             Buyer Details:
           </p>
@@ -37,7 +46,7 @@ export default function CardDetails() {
             </div>
           </div>
           <p className="mt-6 text-lg font-bold text-gray-600 ">
-            Range: $100 - $150
+            Range: ${min_price.toLocaleString()} - ${max_price.toLocaleString()}
           </p>
         </div>
       </div>
