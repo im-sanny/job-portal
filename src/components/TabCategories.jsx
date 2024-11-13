@@ -4,8 +4,8 @@ import TabCard from "./TabCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ({ jobs }) {
-  const { jobs, setJobs } = useState([]);
+export default function TabCategories() {
+  const  [jobs, setJobs] = useState([]);
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios(`${import.meta.env.VITE_API_URL}/jobs`);
@@ -13,6 +13,8 @@ export default function ({ jobs }) {
     };
     getData();
   }, []);
+  console.log(jobs);
+
   const categories = [
     {
       title: "Web Development",
