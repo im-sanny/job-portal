@@ -1,8 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function CardDetails() {
+  const [startDate, setStartDate] = useState(new Date());
   const { user } = useContext(AuthContext);
   const job = useLoaderData();
   const {
@@ -126,8 +130,12 @@ export default function CardDetails() {
             </div>
             <div className="flex flex-col gap-2 ">
               <label className="text-gray-700">Deadline</label>
-
               {/* Date Picker Input Field */}
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+              />
             </div>
           </div>
 
