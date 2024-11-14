@@ -13,8 +13,34 @@ export default function CardDetails() {
     min_price,
     max_price,
     deadline,
+    buyer_email,
   } = job || {};
-  console.log(job);
+
+  const handleFormSubmission = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const jobId = _id;
+    const price = parseFloat(form.price.value);
+    const comment = form.comment.value;
+    // const deadline = deadline
+    const email = user?.email;
+    // const buyer_email = buyer_email;
+    const status = "Pending";
+
+    const bidData = {
+      jobId,
+      price,
+      deadline,
+      comment,
+      job_title,
+      category,
+      status,
+      buyer_email,
+      email,
+    };
+    console.table(bidData);
+  };
+
   return (
     <div className="flex flex-col md:flex-row justify-around gap-5  items-center min-h-[calc(100vh-306px)] md:max-w-screen-xl mx-auto ">
       {/* Job Details */}
@@ -59,7 +85,7 @@ export default function CardDetails() {
           Place A Bid
         </h2>
 
-        <form>
+        <form onSubmit={handleFormSubmission}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label className="text-gray-700 " htmlFor="price">
