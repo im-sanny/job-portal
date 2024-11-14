@@ -1,6 +1,9 @@
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import { useContext } from "react";
 
 export default function CardDetails() {
+  const { user } = useContext(AuthContext);
   const job = useLoaderData();
   const {
     _id,
@@ -79,6 +82,7 @@ export default function CardDetails() {
                 type="email"
                 name="email"
                 disabled
+                defaultValue={user?.email}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
               />
             </div>
