@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
+import axios from "axios";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -26,7 +27,7 @@ export default function CardDetails() {
     const jobId = _id;
     const price = parseFloat(form.price.value);
     const comment = form.comment.value;
-    // const deadline = deadline
+    const deadline = startDate;
     const email = user?.email;
     // const buyer_email = buyer_email;
     const status = "Pending";
@@ -42,7 +43,12 @@ export default function CardDetails() {
       buyer_email,
       email,
     };
-    console.table(bidData);
+    try {
+      const { data } = await axios.post("http://localhost:9000/bid", bidData);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
