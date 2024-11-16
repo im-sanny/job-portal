@@ -3,6 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -26,6 +27,9 @@ export default function CardDetails() {
     const form = e.target;
     const jobId = _id;
     const price = parseFloat(form.price.value);
+    if (price < parseFloat(min_price)) {
+      return toast.error("Offer more or at least equal to Minimum price!");
+    }
     const comment = form.comment.value;
     const deadline = startDate;
     const email = user?.email;
