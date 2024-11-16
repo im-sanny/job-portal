@@ -44,7 +44,10 @@ export default function CardDetails() {
       email,
     };
     try {
-      const { data } = await axios.post("http://localhost:9000/bid", bidData);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/post`,
+        bidData
+      );
       console.log(data);
     } catch (error) {
       console.log(error);
