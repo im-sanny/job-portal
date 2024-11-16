@@ -49,7 +49,7 @@ export default function CardDetails() {
     };
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/post`,
+        `${import.meta.env.VITE_API_URL}/bid`,
         bidData
       );
       console.log(data);
