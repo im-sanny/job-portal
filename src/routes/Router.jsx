@@ -5,11 +5,13 @@ import Login from '../pages/Authentication/Login';
 import Register from '../pages/Authentication/Register';
 import CardDetails from '../pages/CardDetails';
 import AddCard from '../pages/AddCard';
+import ErrorPage from '../pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
