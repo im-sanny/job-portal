@@ -1,11 +1,11 @@
-import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
-import { useContext, useState } from "react";
-import DatePicker from "react-datepicker";
-import axios from "axios";
-import toast from "react-hot-toast";
+import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
+import { useContext, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function CardDetails() {
   const [startDate, setStartDate] = useState(new Date());
@@ -23,18 +23,19 @@ export default function CardDetails() {
   } = job || {};
 
   const handleFormSubmission = async (e) => {
+    if (user?.email === buyer_email) return toast.error('Action not permitted');
     e.preventDefault();
     const form = e.target;
     const jobId = _id;
     const price = parseFloat(form.price.value);
     if (price < parseFloat(min_price)) {
-      return toast.error("Offer more or at least equal to Minimum price!");
+      return toast.error('Offer more or at least equal to Minimum price!');
     }
     const comment = form.comment.value;
     const deadline = startDate;
     const email = user?.email;
     // const buyer_email = buyer_email;
-    const status = "Pending";
+    const status = 'Pending';
 
     const bidData = {
       jobId,
